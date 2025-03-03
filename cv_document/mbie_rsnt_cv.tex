@@ -1,0 +1,110 @@
+%! Author = matt_dumont
+%! Date = 2/27/25
+
+% Preamble
+\documentclass[a4paper,12pt]{article}
+\usepackage{caption}
+
+\input{mbie_rsnt_settings/mbie_setup}
+\input{data/details}
+\input{mbie_rsnt_settings/pythonsetup}
+\addbibresource{\usebibfile}
+
+
+% Document
+\begin{document}
+    \begin{center}
+        \mbiebf{New Zealand RS\&T Curriculum Vitae \usenametitle{} \usefirstnameval{} \uselastnameval{}}
+    \end{center}
+    \noindent\mbiebf{PART 1}
+    % details table
+    \input{mbie_rsnt_settings/details_table}
+
+    % part 1b. academic qualifications
+    \begin{breakawaybox}{1b. Academic qualifications}
+        \input{data/education}
+    \end{breakawaybox}
+
+    \begin{breakawaybox}{1c. Professional positions held}
+        \input{data/employment}
+    \end{breakawaybox}
+
+    \begin{breakawaybox}{1d. Present research/professional speciality}
+        \input{data/research_speciality}
+    \end{breakawaybox}
+
+    % research experiencel, bespoke table
+    \begin{table}[H]
+        \begin{tblr}{
+            colspec={|m{0.56\textwidth}|m{0.42\textwidth}|},
+            column{1}={bg=mbiegray},
+            column{2}={halign=r},
+        }
+            \hline
+            \mbiebf{1e. Total years research experience} & \py{nyrs_research()} years \\
+            \hline
+        \end{tblr}
+    \end{table}
+
+    \begin{breakawaybox}{{1f. Professional distinctions and memberships (including honours, prizes, scholarships, boards or governance roles, etc)}}
+        \input{data/distinctions_memberships}
+    \end{breakawaybox}
+
+    \input{mbie_rsnt_settings/peer_review_table}
+    % 1g.
+
+    \noindent\mbiebf{PART 2}
+
+    % 2a. Research publications and dissemination
+    % keynote define the bibliography filters
+    \nocite{*}
+    \defbibfilter{confrencepro}{%
+        ( type=inproceedings or type=confrence ) and ( keyword=show )
+    }
+    \defbibfilter{peerreview}{%
+        ( type=article or type=book or type=incollection or type=mvbook or type=inbook) and ( keyword=show )
+    }
+    \defbibfilter{reports}{%
+        ( type=techreport or type=report ) and ( keyword=show )
+    }
+
+    \begin{table}[H]
+        \begin{tblr}{
+            colspec={|m{\textwidth}|},
+            row{1,2}={bg=mbiegray},
+        }
+            \hline
+            \mbiebf{2a. Research publications and dissemination}                         \\
+            \hline
+            \mbiebf{Peer-reviewed journal articles}, \href{https://orcid.org/\orcididnum}{\textit{ORCID:\orcididnum}} \\
+            \hline
+        \end{tblr}
+    \end{table}
+
+    \printbibliography[heading=none, filter=peerreview]
+
+    \headertable[H]{Key conference proceedings}
+    \printbibliography[heading=none, filter=confrencepro]
+
+    \headertable[H]{Other forms of relevant dissemination (reports for clients, technical reports, popular press, etc)}
+    \printbibliography[heading=none, filter=reports]
+
+
+    % 2b. Previous research work
+
+    \begin{breakawaybox}{2b. Previous research work}
+        \input{data/mbie_prev_research}
+    \end{breakawaybox}
+
+    % 2c. Describe the commercial, social or environmental impact of your previous research work
+    \begin{breakawaybox}{{2c. Describe the commercial, social or environmental impact of your previous research work}}
+        \input{data/impact_previous_work}
+    \end{breakawaybox}
+
+    % 2d. Demonstration of relationships with end-users
+    \begin{breakawaybox}{2d. Demonstration of relationships with end-users}
+        \input{data/dem_end_user_relationships}
+    \end{breakawaybox}
+
+
+\end{document}

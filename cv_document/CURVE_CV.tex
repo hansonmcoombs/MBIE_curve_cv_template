@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%
+% developed from https://www.overleaf.com/latex/templates/a-customised-curve-cv/mvmbhkwsnmwv
+\documentclass[a4paper,skipsamekey,11pt,english]{curve}
+\usepackage{etoolbox}
+\usepackage[dvipsnames,svgnames]{xcolor}
+% ------------------------
+%%% Setup style / CV %%%
+% ------------------------
+\definecolor{SwishLineColour}{RGB}{237,232,208} % beige of course
+\definecolor{MarkerColour}{RGB}{120, 117, 105}
+\input{curve_cv_settings/CURVE_setup}
+
+\providetoggle{allrefs}
+\settoggle{allrefs}{true} % keynote toggle to show all references not marked "private"
+
+\begin{document}
+    \makeheaders[c]
+
+    \input{data/career_summary}
+    \makerubric{data/employment}
+
+    \makerubric{data/education}
+
+    \makerubrichead{Areas of Research Specialisation}
+    \input{data/research_speciality}
+
+    \makerubric{data/distinctions_memberships}
+
+    \makerubric{data/skills}
+
+    \makerubric{data/project_examples}
+
+    \makerubric{data/open_source_projects}
+
+    \makerubrichead{Publications}
+
+    % keynote define bibliography filters and groups
+    % Assuming you've already given \addbibresource{own-bib.bib} in the main doc. Right? Right???
+    \nocite{*}
+
+    %----------------------------------------------------------------
+    % Journal article references
+    %----------------------------------------------------------------
+
+    \iftoggle{allrefs}{
+        \defbibfilter{articles}{%
+            ( type=article and not keyword=private )
+        }
+    }{
+        \defbibfilter{articles}{%
+            ( type=article and keyword=show )
+        }
+    }
+    \printbibliography[heading={subbibliography},title={Journal Articles},filter=articles]
+
+    %----------------------------------------------------------------
+    % Confrence proceedings references
+    %----------------------------------------------------------------
+
+    \iftoggle{allrefs}{
+        \defbibfilter{confrencepro}{%
+            ( type=inproceedings or type=confrence ) and not keyword=private
+        }
+    }{
+        \defbibfilter{confrencepro}{%
+            ( type=inproceedings or type=confrence ) and ( keyword=show )
+        }
+    }
+    \printbibliography[heading={subbibliography},title={Conference Proceedings},filter=confrencepro]
+
+    %----------------------------------------------------------------
+    % books and chapters references
+    %----------------------------------------------------------------
+    \iftoggle{allrefs}{
+        \defbibfilter{booksandchapters}{%
+            ( type=book or type=incollection or type=mvbook or type=inbook) and ( not keyword=private )
+        }}
+    {
+        \defbibfilter{booksandchapters}{%
+            ( type=book or type=incollection or type=mvbook or type=inbook) and ( keyword=show )
+        }
+    }
+    \printbibliography[heading={subbibliography},title={Books and Chapters},filter={booksandchapters}]
+
+    %----------------------------------------------------------------
+    % report references
+    %----------------------------------------------------------------
+    \iftoggle{allrefs}{
+        \defbibfilter{reports}{%
+            ( type=techreport or type=report ) and ( not keyword=private )
+        }
+    }{
+        \defbibfilter{reports}{%
+            ( type=techreport or type=report ) and ( keyword=show )
+        }
+    }
+    \printbibliography[heading={subbibliography},title={Reports},filter={reports}]
+
+    %----------------------------------------------------------------
+    % other references
+    %----------------------------------------------------------------
+    \iftoggle{allrefs}{
+        \defbibfilter{other}{%
+            ( not type=techreport and not type=report and not type=book and not type=incollection and not type=mvbook and not type=inbook and not type=inproceedings and not type=confrence and not type=article and not keyword=private )
+        }
+
+    }{
+        \defbibfilter{other}{%
+            ( not type=techreport and not type=report and not type=book and not type=incollection and not type=mvbook and not type=inbook and not type=inproceedings and not type=confrence and not type=article and keyword=show )
+        }
+    }
+%
+    \printbibliography[heading={subbibliography},title={Other},filter={other}]
+
+
+\end{document}

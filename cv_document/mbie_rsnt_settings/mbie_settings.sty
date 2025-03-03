@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%
+% This CV example/template is based on my own
+% CV which I (lamely attempted) to clean up, so that
+% it's less of an eyesore and easier for others to use.
+%
+% LianTze Lim (liantze@gmail.com)
+% 23 Oct, 2022
+% 24 Aug, 2024 -- added simpleicons to provide X-twitter icon
+
+\newcommand{\smallcaps}[1]{\textsc{\lowercase{#1}}}
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}
+
+\setlength{\bibitemsep}{1.5ex}
+\setlength{\bibhang}{2.5em}
+
+\urlstyle{tt}
+
+\RequirePackage{pgffor}
+\newcommand{\mynames}[1]{\def\my@namelist{#1}}
+\newtoggle{boldname}
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \global\togglefalse{boldname}%
+  \foreach \my@fname / \my@gname in \my@namelist {%
+    \ifboolexpr{ test {\ifdefstrequal{\namepartfamily}{\my@fname}}
+                 and
+                 test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
+      {\global\toggletrue{boldname}}{}%
+  }%
+  \iftoggle{boldname}{\mbiebf{#1}}{#1}%
+}
+
+\renewcommand*{\mkbibnamegiven}[1]{%
+  \global\togglefalse{boldname}%
+  \foreach \my@fname / \my@gname in \my@namelist{%
+    \ifboolexpr{ test {\ifdefstrequal{\namepartfamily}{\my@fname}}
+                 and
+                 test {\ifdefstrequal{\namepartgiven}{\my@gname}}}
+      {\global\toggletrue{boldname}\breakforeach}{}%
+  }%
+  \iftoggle{boldname}{\mbiebf{#1}}{#1}%
+}
+
+
+\RequirePackage[colorlinks=false,allcolors=black,breaklinks=true]{hyperref}
+
+

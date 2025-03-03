@@ -1,0 +1,36 @@
+%! Author = matt_dumont
+%! Date = 2/27/25
+\newcommand{\usenametitle}{Captin} % Mr., Ms., Dr., etc.
+\newcommand{\usefirstnameval}{Raymond} % first name
+\newcommand{\usemiddlenameval}{Jacob} % leave empty {} if no middle name
+\newcommand{\uselastnameval}{Holt}  % last name
+\newcommand{\usepresentposition}{Angry Captin and robot} % position title
+\newcommand{\usequal}{PhD} % e.g., PhD, MSc, BSc
+\newcommand{\usecompany}{New York Police Department}  % company name
+\newcommand{\useaddress}{6th Avenue and Bergen Street} % address
+\newcommand{\usecity}{Brooklyn, NY} % city
+\newcommand{\usecountry}{USA} % country
+\newcommand{\usepostcode}{11217} % postal code
+\newcommand{\usephone}{0800 123 4567} % mobile phone number
+\newcommand{\usephonelandline}{~} % landline phone number (~) if not available
+\newcommand{\useemail}{Raymond.holt@nypdpr.org} % email address
+\newcommand{\linkedinref}{https://www.linkedin.com/in/raymond-holt-7b2aa9200/} % LinkedIn profile link
+\newcommand{\orcididnum}{0000-0000-0000-0000} % ORCID ID
+\newcommand{\usepersonalwebsite}{~} % personal website
+\def \startResearchYear{2013} % year you started research (to calculate years of research experience)
+\def \photopath {data/ray_holt} % path to your photo relative to the main latex file
+\def \usephotoscale {0.16} % scale the photo size
+\def \usebibfile {data/own-bib.bib} % path to your own bib file relative to the main latex file
+\def \latexfolder {cv_document}  % folder where the main latex file is located
+
+%% Specify your last name(s) and first name(s) (as given in the .bib) to automatically bold your own name in the publications list.
+%% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
+% \mynames{Lim/Lian\bibnamedelima Tze}
+
+%% You can specify multiple names like this, especially if you have changed your name or if you need to highlight multiple authors. See items 6–9 in the example "Journal Articles" output.
+
+\mynames{
+    Holt/Raymond,
+    Holt/R.\bibnamedelimi J.,
+}
+%% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST

@@ -1,0 +1,92 @@
+%! Author = matt_dumont
+%! Date = 2/27/25
+
+% Default biblatex style used for the publication list is APA6. If you wish to use a different style or pass other options to biblatex you can change them here.
+\PassOptionsToPackage{style=authoryear,sorting=ydnt, dashed=false}{biblatex}
+\newcommand{\mbiebf}{\textbf}
+\newcommand{\cvtextbf}{\textbf} % text to be bold in the CV template
+% Most commands and style definitions are in settings.sty.
+\usepackage{curve_cv_settings/CURVE_settings}  % local style file
+\usepackage[T1]{fontenc}
+\usepackage[p,osf,swashQ]{cochineal}
+\usepackage{cabin}
+\usepackage[varqu,varl,scale=0.9]{zi4}
+\usepackage[makestderr]{pythontex}
+\usepackage{lipsum}
+\usepackage{dirtytalk}
+
+
+\input{data/details}
+\providetoggle{detailedversion}
+\settoggle{detailedversion}{true}
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+%----------------------------------------------
+%%%% Bibliography setup %%%%
+%----------------------------------------------
+
+% If you need to further customise your biblatex setup e.g. with \DeclareFieldFormat etc please add them here AFTER loading settings.sty. For example, to remove the default "[Online] Available:" prefix before URLs when using the IEEE style:
+\DefineBibliographyStrings{english}{url={\textsc{url}}}
+%% Only needed if you want a Publication List
+\setlength\bibitemsep{0pt}
+
+\addbibresource{\usebibfile}
+
+% --------------------------------------------------
+%%%% Change other parameters of the document %%%%
+% --------------------------------------------------
+
+
+% Change the page margins if you want
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+% Change the item prefix marker if you want
+\prefixmarker{}
+\includecomment{fullonly}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\leftheader{%
+
+    \vspace{0.2cm}
+
+    {\LARGE\bfseries\sffamily\color{MarkerColour}\usefirstnameval{} \uselastnameval{}, \usequal{}}
+
+    \makefield{\faEnvelope[regular]}{\href{mailto:\useemail}{\texttt{\useemail{}}}}
+    \makefield{\faPhone}{\usephone{}}
+
+    \makefield{\faLinkedin}{\href{\linkedinref}{\texttt{\usefirstnameval{} \uselastnameval{}}}}
+    \makefield{\textcolor{orcidlogocol}\faOrcid}{\href{https://orcid.org/\orcididnum}{\texttt{\orcididnum}}}
+}
+
+\rightheader{~}
+\begin{fullonly}
+\photo[r]{\photopath}
+\photoscale{\usephotoscale}
+\end{fullonly}
+
+%----------------------------------------------------------------------------------------
+% define inline equation
+%----------------------------------------------------------------------------------------
+\makeatletter
+\newcommand*{\inlineequation}[2][]{%
+    \begingroup
+    % Put \refstepcounter at the beginning, because
+    % package `hyperref' sets the anchor here.
+    \refstepcounter{equation}%
+    \ifx\\#1\\%
+    \else
+    \label{#1}%
+    \fi
+    % prevent line breaks inside equation
+    \relpenalty=10000 %
+    \binoppenalty=10000 %
+    \ensuremath{%
+    % \displaystyle % larger fractions, ...
+        #2%
+    }%
+    ~\@eqnnum
+    \endgroup
+}
+\makeatother

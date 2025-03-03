@@ -1,0 +1,39 @@
+%! Author = matt_dumont
+%! Date = 2/28/25
+
+\begin{table}[H]
+    \begin{tblr}{
+        hlines, vlines,
+    colspec={
+        Q[0.16\linewidth]
+        Q[0.10\linewidth]
+        Q[0.17\linewidth]
+        Q[0.13\linewidth]
+        Q[0.13\linewidth]
+        Q[0.17\linewidth]
+    },
+        column{1}={bg=mbiegray},
+        row{1}={bg=mbiegray},
+    }
+        \SetCell[c=6]{l} \mbiebf{1a. Personal details} & & & & & \\
+        % name line
+        \SetCell[r=2]{l} \mbiebf{Full Name} &\SetCell[r=2]{l} \tiny{\textit{Title}} \newline \normalsize\usenametitle & \SetCell[r=2]{l} \tiny{\textit{First name}} \newline \normalsize \usefirstnameval& \SetCell[r=2,c=2]{l} \tiny{\textit{Second names(s)}} \newline \normalsize \usemiddlenameval & & \SetCell[r=2]{l} \tiny{\textit{Last name}} \newline \normalsize \uselastnameval \\
+        & & & & & \\
+        % present position line
+        \SetCell[c=2]{l} \mbiebf{Present position} & & \SetCell[c=4]{l} \usepresentposition & & & \\
+        % organsiation line
+        \SetCell[c=2]{l} \mbiebf{Organisation/Employer} & & \SetCell[c=4]{l} \usecompany & & & \\
+%
+        % address section
+        \SetCell[c=2, r=3]{l} \mbiebf{Contact Address} & & \SetCell[c=4]{l} \usecompany & & & \\
+        & & \SetCell[c=4]{l} \useaddress & & & \\
+        & & \SetCell[c=2]{l} \usecity & &\SetCell{mbiegray} \mbiebf{Post code} & \usepostcode \\
+%
+        % telephone line
+        \SetCell[c=2]{l} \mbiebf{Work telephone} & & \usephonelandline & \SetCell{mbiegray} \mbiebf{Mobile} & \SetCell[c=2]{l} \usephone & \\
+%
+        % email etc.
+        \SetCell[c=2]{l} \mbiebf{Email} & & \SetCell[c=4]{l} \useemail & & & \\
+        \SetCell[c=2]{l} \mbiebf{Personal website} & & \SetCell[c=4]{l} \usepersonalwebsite & & & \\
+    \end{tblr}
+\end{table}

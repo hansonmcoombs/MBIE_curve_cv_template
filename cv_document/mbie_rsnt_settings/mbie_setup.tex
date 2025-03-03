@@ -1,0 +1,81 @@
+%! Author = matt_dumont
+%! Date = 2/28/25
+\usepackage{geometry}
+
+\usepackage{colortbl}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage{tabularray}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage[colorlinks=false,allcolors=black,breaklinks=true]{hyperref}
+\usepackage{etoolbox}
+\usepackage{dirtytalk}
+\usepackage[style=authoryear,sorting=ydnt, dashed=false]{biblatex}
+\usepackage[rerun=always]{pythontex}
+% keynote adjustment to c. line 1575 /usr/share/texlive/texmf-dist/scripts/pythontex/pythontex3.py (run_code)
+%       exec_cmd[0] =  f'{sys.executable}'   % added
+%        try:
+%            if family != 'Rcon':
+%                proc = subprocess.Popen(exec_cmd, stdout=out_file, stderr=err_file)
+%                print('run')
+
+\providetoggle{detailedversion}
+\settoggle{detailedversion}{false}
+\newcommand{\mbiebf}{\textbf} % text to be bold in the MBIE template
+\newcommand{\cvtextbf}{} % text to be bold in the CV template
+
+\usepackage{mbie_rsnt_settings/mbie_settings}
+\usepackage{helvet}
+\usepackage{enumitem}
+\definecolor{mbiegray}{RGB}{224,224,224}
+%----------------------------------------------------------
+% tcolorbox
+%----------------------------------------------------------
+\usepackage[skins, most, many, listings]{tcolorbox} % create breakaway boxes
+\newtcolorbox{breakawaybox}[1]{
+    enhanced,colframe=black,colback=white,fonttitle=\bfseries,
+    colbacktitle=mbiegray, coltitle=black, title=#1, boxrule=0.5pt, arc=0pt,
+    width=1.03\textwidth, breakable=true, segmentation style={solid, black, line width=0.5pt}
+}
+
+% ----------------------------------------------------------
+%%%%%% rubric to list %%%%%
+%----------------------------------------------------------
+\newenvironment{rubric}[1]{\begin{enumerate}[align=left]}{\end{enumerate}}
+
+% ----------------------------------------------------------
+%%%%% entry to item %%%%%%
+%----------------------------------------------------------
+\newcommand{\entry}[2][]{\item[#1] {\normalfont{#2}}}
+\renewcommand{\familydefault}{\sfdefault}
+%----------------------------------------------------------
+%%%%% header table %%%%%%
+%----------------------------------------------------------
+\newcommand{\headertable}[2][h]{
+    \begin{table}[#1]
+    \begin{tblr}{
+        colspec={|m{\textwidth}|},
+        row{1}={bg=mbiegray},
+    }
+    \hline
+    \mbiebf{#2} \\
+    \hline
+    \end{tblr}
+    \end{table}
+}
+
+%----------------------------------------------------------
+%%%%%%% geometry %%%%%%
+%----------------------------------------------------------
+\geometry{left=1in,right=1in,top=0.4in,bottom=0.4in}
+\pagenumbering{gobble}
+
+% ----------------------------------------------------------
+%%%% set list spacing %%%%%
+%----------------------------------------------------------
+\setlist[itemize]{labelindent=1em, align=left, leftmargin=*, parsep=0.4pt, itemsep=0.2pt, topsep=0pt, partopsep=0pt}
+\setlist[enumerate]{labelindent=1em, align=left, leftmargin=*, parsep=0.4pt, itemsep=0.2pt, topsep=0pt, partopsep=0pt}
+\setlength\bibitemsep{0pt}
+\parskip=0pt
+
+
