@@ -1,0 +1,42 @@
+%! Author = matt_dumont
+%! Date = 3/5/25
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{tcolorbox}
+\usepackage{biblatex}
+
+\addbibresource{own-bib.bib}
+
+
+% Document
+\begin{document}
+    \nocite{*}
+    \defbibfilter{peerreview}{%
+        ( type=article or type=book or type=incollection or type=mvbook or type=inbook) and ( keyword=show )
+    }
+    % WORKS fine
+    \begin{tcolorbox}[title=Peer Review]
+        \printbibliography
+    \end{tcolorbox}
+
+    % fails (Error:(28) Extra }, or forgotten \endgroup.\endtcb@savebox ...efalse \color@endgroup \egroup \expandafter \@iiiparbox \...l.28 \end{tcolorbox})
+    \begin{tcolorbox}[title=Peer Review]
+        \printbibliography[filter=peerreview]
+    \end{tcolorbox}
+
+    % fails(Error:(33) Extra }, or forgotten \endgroup.\endtcb@savebox ...efalse \color@endgroup \egroup \expandafter \@iiiparbox \...l.33 \end{tcolorbox})
+    \begin{tcolorbox}[title=Peer Review]
+        \printbibliography[heading=none, filter=peerreview]
+    \end{tcolorbox}
+
+    % fails (Error:(23) Extra }, or forgotten \endgroup.\endtcb@savebox ...efalse \color@endgroup \egroup \expandafter \@iiiparbox \...l.23 \end{tcolorbox})
+    \begin{tcolorbox}[title=Peer Review]
+        \printbibliography[heading=none, filter=peerreview]
+    \end{tcolorbox}
+
+    % WORKS fine
+    \printbibliography[heading=none, filter=peerreview]
+\end{document}
