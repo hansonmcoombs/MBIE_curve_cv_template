@@ -20,8 +20,8 @@ Outstanding issues and inconsistencies with the MBIE RS&T CV
     * The font **helvet** is used in place of the proprietary **Arial** font to support linux systems.
     * Section 1g. "patents" has been replaced with "consultancy reports"
     * Section 2a. the subtitles (Peer-review journal articles) are bolded rather than plan text (as in the word template).  This was done for readability only
+    * Section 2a. there is a space between section 2a and the peer-reviewed journal articles that is not present in the word template.
     * Section 2a. The user's orcid id (live link) has been added to the "Peer-review journal articles" subtitle.
-    * Section 2a. The references are not within in a tcolorbox (frame) as in the word template.  This is due to a bug which prevents the \printbibliography command from working within a tcolorbox if a filter or heading=none is used.
     * Section 2c. and 2d. have been incorporated into tcolorboxes (frames) for consistency with the rest of the CV.
 * Note that the mbie_settings.sty file was taken from the Curve CV template by LianTze Lim and largely used to implement the bibliography formatting (bolding author names). I have removed as much excess as I could, but not all of the settings may be needed.
 

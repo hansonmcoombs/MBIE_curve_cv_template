@@ -5,37 +5,45 @@
 \documentclass[11pt]{article}
 
 % Packages
-\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage[skins, most, many, listings]{tcolorbox}
 \usepackage{biblatex}
 
 \addbibresource{own-bib.bib}
+
+
+\newtcolorbox{breakawaybox}[1]{
+    enhanced,colframe=black,colback=white,fonttitle=\bfseries,
+    colbacktitle=gray, coltitle=black, title=#1, boxrule=0.5pt, arc=0pt,
+    width=1.03\textwidth, breakable=true, segmentation style={solid, black, line width=0.5pt}
+}
 
 
 % Document
 \begin{document}
     \nocite{*}
     \defbibfilter{peerreview}{%
-        ( type=article or type=book or type=incollection or type=mvbook or type=inbook) and ( keyword=show )
+        ( type=article or type=book or type=incollection or type=mvbook or type=inbook ) and ( keyword=show )
     }
     % WORKS fine
-    \begin{tcolorbox}[title=Peer Review]
+    \begin{breakawaybox}{Peer Review}
         \printbibliography
-    \end{tcolorbox}
+    \end{breakawaybox}
 
     % fails (Error:(28) Extra }, or forgotten \endgroup.\endtcb@savebox ...efalse \color@endgroup \egroup \expandafter \@iiiparbox \...l.28 \end{tcolorbox})
-    \begin{tcolorbox}[title=Peer Review]
+    \begin{breakawaybox}{Peer Review}
         \printbibliography[filter=peerreview]
-    \end{tcolorbox}
+    \end{breakawaybox}
 
     % fails(Error:(33) Extra }, or forgotten \endgroup.\endtcb@savebox ...efalse \color@endgroup \egroup \expandafter \@iiiparbox \...l.33 \end{tcolorbox})
-    \begin{tcolorbox}[title=Peer Review]
+    \begin{breakawaybox}{Peer Review}
         \printbibliography[heading=none, filter=peerreview]
-    \end{tcolorbox}
+    \end{breakawaybox}
 
-    % fails (Error:(23) Extra }, or forgotten \endgroup.\endtcb@savebox ...efalse \color@endgroup \egroup \expandafter \@iiiparbox \...l.23 \end{tcolorbox})
-    \begin{tcolorbox}[title=Peer Review]
-        \printbibliography[heading=none, filter=peerreview]
-    \end{tcolorbox}
+    %
+    \begin{breakawaybox}{Peer Review}
+        \printbibliography[heading=none]
+    \end{breakawaybox}
 
     % WORKS fine
     \printbibliography[heading=none, filter=peerreview]

@@ -62,32 +62,29 @@
         ( type=inproceedings or type=confrence ) and ( keyword=show )
     }
     \defbibfilter{peerreview}{%
-        ( type=article or type=book or type=incollection or type=mvbook or type=inbook) and ( keyword=show )
+        ( type=article or type=book or type=incollection or type=mvbook or type=inbook ) and ( keyword=show )
     }
     \defbibfilter{reports}{%
         ( type=techreport or type=report ) and ( keyword=show )
     }
 
-    \begin{table}[H]
-        \begin{tblr}{
-            colspec={|m{\textwidth}|},
-            row{1,2}={bg=mbiegray},
-        }
-            \hline
-            \mbiebf{2a. Research publications and dissemination}                         \\
-            \hline
-            \mbiebf{Peer-reviewed journal articles}, \href{https://orcid.org/\orcididnum}{\textit{ORCID:\orcididnum}} \\
-            \hline
-        \end{tblr}
-    \end{table}
+    \headertable{2a. Research publications and dissemination}
 
-    \printbibliography[heading=none, filter=peerreview]
+    \begin{breakawaybox}{
+    {Peer-reviewed journal articles, \href{https://orcid.org/\orcididnum}{\textit{ORCID:\orcididnum}}}
+    }
+        \printbibliography[heading=none, filter=peerreview]
 
-    \headertable[H]{Key conference proceedings}
-    \printbibliography[heading=none, filter=confrencepro]
+    \end{breakawaybox}
 
-    \headertable[H]{Other forms of relevant dissemination (reports for clients, technical reports, popular press, etc)}
-    \printbibliography[heading=none, filter=reports]
+
+    \begin{breakawaybox}{Key conference proceedings}
+        \printbibliography[heading=none, filter=confrencepro]
+    \end{breakawaybox}
+
+    \begin{breakawaybox}{{Other forms of relevant dissemination (reports for clients, technical reports, popular press, etc)}}
+        \printbibliography[heading=none, filter=reports]
+    \end{breakawaybox}
 
 
     % 2b. Previous research work
